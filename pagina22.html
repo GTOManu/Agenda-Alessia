@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Alessia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <span>22 Agosto 23</span>
+    <textarea id="myTextarea22" rows="35" cols="51"  ></textarea>
+    <button id="saveButton" >Salva</button>
+    <button id="prevButton">Indietro</button>
+    <button id="nextButton">Avanti</button>
+
+<script>
+    // Aggiungi un gestore di eventi al bottone "Salva dati"
+document.getElementById("saveButton").addEventListener("click", function() {
+  // Ottieni il contenuto della textarea
+  var textareaContent22 = document.getElementById("myTextarea22").value;
+  
+  // Salva il contenuto della textarea localmente (puoi personalizzare il nome del campo se necessario)
+  localStorage.setItem("savedText22", textareaContent22);
+  
+  // Notifica all'utente che i dati sono stati salvati
+  alert("Dati salvati con successo!");
+});
+
+// Al caricamento della pagina, ripristina il contenuto salvato della textarea (se disponibile)
+window.addEventListener("load", function() {
+  var savedText22 = localStorage.getItem("savedText22");
+  if (savedText22) {
+    document.getElementById("myTextarea22").value = savedText22;
+  }
+});
+
+var pagine = ["index.html", "pagina2.html", "pagina3.html","pagina4.html","pagina5.html","pagina6.html","pagina7.html","pagina8.html","pagina9.html","pagina10.html","pagina11.html","pagina12.html","pagina13.html","pagina14.html","pagina15.html","pagina16.html","pagina17.html","pagina18.html","pagina19.html","pagina20.html","pagina21.html","pagina22.html","pagina23.html","pagina24.html","pagina25.html","pagina26.html","pagina27.html","pagina28.html","pagina29.html","pagina30.html","pagina31.html"];
+        var pageIndex = 21;
+
+        function navigateToPage(index) {
+            // Verifica che l'indice sia valido
+            if (index >= 0 && index < pagine.length) {
+                // Costruisci l'URL della pagina corrispondente
+                var nextPage = pagine[index];
+
+                // Cambia pagina HTML
+                window.location.href = nextPage;
+            }
+        }
+
+        // Gestore dell'evento del bottone "Indietro"
+        document.getElementById("prevButton").addEventListener("click", function () {
+            pageIndex--;
+            if (pageIndex < 0) {
+                pageIndex = pagine.length - 1;
+            }
+            navigateToPage(pageIndex);
+        });
+
+        // Gestore dell'evento del bottone "Avanti"
+        document.getElementById("nextButton").addEventListener("click", function () {
+            pageIndex++;
+            if (pageIndex >= pagine.length) {
+                pageIndex = 0;
+            }
+            navigateToPage(pageIndex);
+        });
+</script>
+</body>
+</html>
